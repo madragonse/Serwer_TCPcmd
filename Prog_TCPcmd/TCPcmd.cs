@@ -9,7 +9,7 @@ namespace IO_Lab1_Serwer
     {
         static void Main(string[] args)
         {
-            Serwer serwer = new Serwer(IPAddress.Any, 2048);
+            Serwer_TCPcmdSync serwer = new Serwer_TCPcmdSync(IPAddress.Any, 2048);
 
             for (int i = 0; i < 100; i++)
             {

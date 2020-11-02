@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Serwer_TCPcmd
 {
-    public class Serwer
+    public abstract class Serwer_TCPcmd
     {
 #region zmienne
         private TcpListener server;
@@ -34,7 +34,7 @@ namespace Serwer_TCPcmd
         /// <param name="port"></param>
         /// nasłuchiwanie na
         /// podanym konkretnym porcie [port]
-        public void AcceptClient()
+        protected void AcceptClient()
         { 
             client = server.AcceptTcpClient();
             stream = client.GetStream();
@@ -47,7 +47,7 @@ namespace Serwer_TCPcmd
         /// oraz od razu wczytuje je do argumentu 
         /// procesu który ma wykonać to polecenie
         /// </summary>
-        public void ReadStream()
+        protected void ReadStream()
         {
             length = stream.Read(buffer, 0, 1024);
 
@@ -61,7 +61,7 @@ namespace Serwer_TCPcmd
         /// który wykona wcześniej przepisane z bufora 
         /// polecenie w konsoli wiersza poleceń systemu
         /// </summary>
-        public void ExecuteCommand()
+        protected void ExecuteCommand()
         {
 
             process.Start();
@@ -87,7 +87,7 @@ namespace Serwer_TCPcmd
         /// nasłuchiwanie na
         /// podanym konkretnym porcie [port]
 
-        public Serwer(IPAddress adresIP, int port)
+        public Serwer_TCPcmd(IPAddress adresIP, int port)
         {
             server = new TcpListener(adresIP, port);
             server.Start();
