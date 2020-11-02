@@ -8,16 +8,16 @@ namespace Serwer_TCPcmd
 {
     public abstract class Serwer_TCPcmd
     {
-#region zmienne
-        private TcpListener server;
-        private TcpClient client;
-        private NetworkStream stream;
+        #region zmienne
+        protected TcpListener server;
+        protected TcpClient client;
+        protected NetworkStream stream;
 
-        private byte[] buffer = new byte[2048];
-        int length;
+        protected byte[] buffer = new byte[2048];
+        private int length;
 
-        private System.Diagnostics.Process process;
-        private System.Diagnostics.ProcessStartInfo startInfo;
+        protected System.Diagnostics.Process process;
+        protected System.Diagnostics.ProcessStartInfo startInfo;
         #endregion
 
 #region funkcje publiczne
@@ -87,9 +87,12 @@ namespace Serwer_TCPcmd
         /// nasłuchiwanie na
         /// podanym konkretnym porcie [port]
 
-        public Serwer_TCPcmd(IPAddress adresIP, int port)
+        public Serwer_TCPcmd()
+        { }
+
+        public Serwer_TCPcmd(IPAddress adres, int port)
         {
-            server = new TcpListener(adresIP, port);
+            server = new TcpListener(adres, port);
             server.Start();
             AcceptClient();
 

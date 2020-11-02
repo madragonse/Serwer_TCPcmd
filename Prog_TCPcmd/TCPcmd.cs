@@ -9,25 +9,7 @@ namespace IO_Lab1_Serwer
     {
         static void Main(string[] args)
         {
-            Serwer_TCPcmdSync serwer = new Serwer_TCPcmdSync(IPAddress.Any, 2048);
-
-            for (int i = 0; i < 100; i++)
-            {
-                try
-                {
-                    serwer.ReadStream();
-                    Thread.Sleep(500);
-                    serwer.ExecuteCommand();
-                    Thread.Sleep(2000);
-                }
-                catch (Exception error)
-                {
-                    serwer.AcceptClient();
-                }
-
-                
-            }
-
+            Serwer_TCPcmdAPM serwer = new Serwer_TCPcmdAPM(IPAddress.Any, 2048);
 
 
         }
